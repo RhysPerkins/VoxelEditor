@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using VoxelMeshEditor.Mathematics;
+using VoxelEditor.Mathematics;
 
-namespace VoxelMeshEditor.Cameras
+namespace VoxelEditor.Cameras
 {
     public class FreeLookCameraSettings : CameraSettings
     {

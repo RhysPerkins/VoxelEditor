@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Xml.Serialization;
 
-namespace VoxelMeshEditor.Cameras
+namespace VoxelEditor.Cameras
 {
     // Matrix Order
     // ============

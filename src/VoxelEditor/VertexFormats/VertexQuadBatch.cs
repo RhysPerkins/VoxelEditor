@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace VoxelMeshEditor.VertexFormats
+namespace VoxelEditor.VertexFormats
 {
     public struct VertexQuadBatch : IVertexType
     {
