@@ -287,32 +287,33 @@ namespace VoxelEditor.Cameras
         {
             // Input is only handled when the camera is not interpolating
             if (!isInterpolating)
-            {
                 HandleInput();
+            else
+                UpdateInterpolation(gameTime);
+
+            UpdateViewMatrix();
+        }
+
+        private void UpdateInterpolation(GameTime gameTime)
+        {
+            float dt = (float)gameTime.TotalGameTime.TotalSeconds - interpolationStart;
+
+            // Scale dt to the range of [0, 1] for slerping
+            float delta = dt / interpolationTime;
+
+            if (delta < 1f)
+            {
+                orientation = Quaternion.Slerp(orientationStart, orientationEnd, delta);
             }
             else
             {
-                float dt = (float)gameTime.TotalGameTime.TotalSeconds - interpolationStart;
+                // Update accumulated pitch and yaw once interpolation has ended
+                pitchAccum = MathHelper.ToDegrees((float)Math.Asin(matrix_View.M23));
+                yawAccum = MathHelper.ToDegrees((float)Math.Atan2(matrix_View.M13, matrix_View.M33));
 
-                // Scale dt to the range of [0, 1] for slerping
-                float delta = dt / interpolationTime;
-
-                if (delta < 1f)
-                {
-                    orientation = Quaternion.Slerp(orientationStart, orientationEnd, delta);
-                }
-                else
-                {
-                    // Update accumulated pitch and yaw once interpolation has ended
-                    pitchAccum = MathHelper.ToDegrees((float)Math.Asin(matrix_View.M23));
-                    yawAccum = MathHelper.ToDegrees((float)Math.Atan2(matrix_View.M13, matrix_View.M33));
-
-                    // Flag interpolating as false
-                    isInterpolating = false;
-                }
+                // Flag interpolating as false
+                isInterpolating = false;
             }
-
-            UpdateViewMatrix();
         }
 
         protected override void UpdatePerspective()
