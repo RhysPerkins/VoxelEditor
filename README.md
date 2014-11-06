@@ -1,7 +1,6 @@
 VoxelEditor
 ===========
-
-A tool that allows you to create, texture and animate voxels
+## A tool that allows you to create, texture and animate voxels
 
 Voxel Editor was developed using
 
