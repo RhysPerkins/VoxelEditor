@@ -13,4 +13,4 @@ Voxel Editor was developed using:
 - XML
 - XNA
 
-This repository provides a small sample of entire source code
+Please note that this repository only provides a small sample of the entire source code
